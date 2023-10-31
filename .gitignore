@@ -1,0 +1,5 @@
+/node_modules
+frontend/public
+_tmp/
+.DS_Store
+/package-lock.json
