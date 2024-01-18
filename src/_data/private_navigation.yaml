@@ -1,0 +1,14 @@
+---
+items:
+  - text: Missions
+    url: "/index"
+  - text: Agents
+    url: "/agents"
+  - text: Contacts
+    url: "/contacts"
+  - text: Cibles
+    url: "/targets"
+  - text: Planques
+    url: "/hideouts"
+  - text: Spécialités
+    url: "/specialties"

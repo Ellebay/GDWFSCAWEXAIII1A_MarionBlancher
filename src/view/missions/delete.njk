@@ -1,0 +1,31 @@
+---
+title: "Supprimer Des Missions - KGB"
+layout: "base.njk"
+permalink: "missionsDelete.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+<button id="missionBackButton" class="action-button back_btn">Retour Aux Missions</button>
+<div id="delete_wrapper">
+    <div class="detail-container">
+        <select
+            id="mission-dropdown"  class="dropdown_btn"><!-- Options will be dynamically populated with mission data -->
+        </select>
+    </div>
+    <button id="missionDeleteButton" class="delete_mission_btn">Supprimer la mission</button>
+</div>
+<div id="myModal" class="modal">
+    <div id="modalContent" class="modal-content">
+        <span id="closeModalButton" class="close">close</span>
+        <!-- The message content will be displayed here -->
+    </div>
+</div>
+<script src="./js/missions/delete.js"></script>

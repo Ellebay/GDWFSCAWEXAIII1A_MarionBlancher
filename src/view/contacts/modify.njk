@@ -1,0 +1,63 @@
+---
+title: "Modifications Des Contacts - KGB"
+layout: "base.njk"
+permalink: "contactsModify.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<button id="contactBackButton" class="action-button back_btn">Retour Aux Contacts</button>
+
+<div class="detail-container">
+    <select id="contact-dropdown"  class="dropdown_btn">
+        <!-- Options will be dynamically populated with contact data -->
+    </select>
+</div>
+
+<form id="modifyContact-form"  class="form_style" action="./controller/contacts/modify.php" method="post">
+    <div class="row">
+      <div class="col-50 form__section">
+      <label class="form__label" for="contactLastName">Nom</label>
+      <input class="form__input" name="contactLastName" type="text" id="contactLastName" required="true">
+    </div>
+    <div class="col-50  form__section">
+      <label class="form__label" for="contactFirstName">Prénom</label>
+      <input class="form__input" name="contactFirstName" type="text" id="contactFirstName" required="true">
+    </div>
+    <div class="col-50  form__section">
+      <label class="form__label" for="contactBirthDate">Date de Naissance</label>
+      <input class="form__input" name="contactBirthDate" type="date" id="contactBirthDate" required="true">
+    </div>
+</div>
+    <div class="row">
+      <div class="col-100 form__section">
+      <label class="form__label" for="contactNationality">Nationalité</label>
+      <select class="form__input" name="contactNationality" type="text" id="contactNationality" required="true"></select>
+    </div>
+    <div class="col-100  form__section">
+      <label class="form__label" for="contactCodeName">Nom de Code</label>
+      <input class="form__input" name="contactCodeName" type="text" id="contactCodeName" required="true">
+    </div>
+</div>
+
+    <button id="contactModifyButton" class="form__button mt-4" type="submit" name="submit">Modifier le Contact</button>
+</form>
+
+<div id="myModal" class="modal">
+            
+    <div id="modalContent" class="modal-content">
+        <span id="closeModalButton" class="close">close</span>
+        <!-- The message content will be displayed here -->
+
+    </div>
+</div>
+
+<script src="./js/contacts/modify.js"></script>

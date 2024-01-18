@@ -1,0 +1,51 @@
+---
+title: "Créer nouvelle Planque - KGB"
+layout: "base.njk"
+permalink: "hideoutsCreate.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+<button id="hideoutBackButton" class="action-button back_btn">Retour Aux Planques</button>
+<form id="createHideoutForm"   class="form_style" action="./controller/hideouts/create.php" method="post">
+    <div class="row">
+      <div class="col-50 form__section">
+      <label class="form__label" for="hideoutCountry">Pays</label>
+      <select class="form__input" name="hideoutCountry" type="text" id="hideoutCountry" required="true"></select>
+    </div>
+    <div class="col-50 form__section">
+      <label class="form__label" for="hideoutAddress">Adresse</label>
+      <input class="form__input" name="hideoutAddress" type="text" id="hideoutAddress" required="true">
+    </div>
+    <div class="col-50 form__section">
+      <label class="form__label" for="hideoutCity">City</label>
+      <input class="form__input" name="hideoutCity" type="text" id="hideoutCity" required="true">
+    </div>
+</div>
+    <div class="row">
+      <div class="col-100 form__section">
+      <label class="form__label" for="hideoutType">Type</label>
+      <input class="form__input" name="hideoutType" type="text" id="hideoutType" required="true">
+    </div>
+    <div class="col-100 form__section">
+      <label class="form__label" for="hideoutCodeName">Nom de Code</label>
+      <input class="form__input" name="hideoutCodeName" type="text" id="hideoutCodeName" required="true">
+    </div>
+</div>
+    <button class="form__button mt-4" type="submit" name="submit">Ajouter Nouvelle Planque</button>
+</form>
+
+<div id="myModal" class="modal">
+  <div id="modalContent" class="modal-content">
+    <span id="closeModalButton" class="close">close</span>
+    <!-- The message content will be displayed here -->
+  </div>
+</div>
+    <script src="./js/hideouts/create.js"></script>

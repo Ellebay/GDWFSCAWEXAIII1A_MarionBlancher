@@ -1,0 +1,38 @@
+---
+title: "Supprimer Des Agents - KGB"
+layout: "base.njk"
+permalink: "agentsDelete.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<button id="agentBackButton" class="action-button back_btn">Retour Aux Agents</button>
+
+<div id="delete_wrapper">
+    <div class="detail-container">
+        <select id="agent-dropdown" class="dropdown_btn">
+        <!-- Options will be dynamically populated with agent data -->
+        </select>
+    </div>
+
+    <button id="agentDeleteButton" class="delete_agent_btn ">Supprimer l'Agent</button>
+</div>
+
+<div id="myModal" class="modal">
+            
+    <div id="modalContent" class="modal-content">
+        <span id="closeModalButton" class="close">close</span>
+        <!-- The message content will be displayed here -->
+
+    </div>
+</div>
+
+<script src="./js/agents/delete.js"></script>

@@ -1,0 +1,21 @@
+{
+  "name": "gdwfscawexaiii1a_marionblancher_v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {
+    "@11ty/eleventy-img": "^3.1.8",
+    "@11ty/eleventy-plugin-webc": "^0.11.2"
+  }
+}

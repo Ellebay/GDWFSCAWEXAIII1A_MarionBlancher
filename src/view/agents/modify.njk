@@ -1,0 +1,67 @@
+---
+title: "Modifications Des Agents - KGB"
+layout: "base.njk"
+permalink: "agentsModify.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<button id="agentBackButton" class="action-button back_btn">Retour Aux Agents</button>
+
+<div class="detail-container">
+    <select id="agent-dropdown" class="dropdown_btn">
+        <!-- Options will be dynamically populated with agent data -->
+    </select>
+</div>
+
+<form id="modifyAgent-form" class="form_style" action="./controller/agents/modify.php" method="post">
+    <div class="row">
+      <div class="col-50 form__section">
+      <label class="form__label" for="agentLastName">Nom</label>
+      <input class="form__input" name="agentLastName" type="text" id="agentLastName" required="true">
+    </div>
+    <div class="col-50 form__section">
+      <label class="form__label" for="agentFirstName">Prénom</label>
+      <input class="form__input" name="agentFirstName" type="text" id="agentFirstName" required="true">
+    </div>
+    <div class="col-50 form__section">
+      <label class="form__label" for="agentBirthDate">Date de Naissance</label>
+      <input class="form__input" name="agentBirthDate" type="date" id="agentBirthDate" required="true">
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-50 form__section">
+      <label class="form__label" for="agentNationality">Nationalité</label>
+      <select class="form__input" name="agentNationality" type="text" id="agentNationality" required="true"></select>
+    </div>
+    <div class="col-50 form__section">
+      <label class="form__label" for="agentCodeName">Nom de Code</label>
+      <input class="form__input" name="agentCodeName" type="text" id="agentCodeName" required="true">
+    </div>
+          <div class="col-50 form__section">
+        <label class="form__label" for="agentSpecialtyId">Spécialité</label>
+        <select class="form__input" name="agentSpecialtyId" type="text" id="agentSpecialtyId" required="true"></select>
+      </div>
+    </div>
+
+    <button id="agentModifyButton" class="form__button mt-4" type="submit" name="submit">Modifier l'Agent</button>
+</form>
+
+<div id="myModal" class="modal">
+            
+    <div id="modalContent" class="modal-content">
+        <span id="closeModalButton" class="close">close</span>
+        <!-- The message content will be displayed here -->
+
+    </div>
+</div>
+
+<script src="./js/agents/modify.js"></script>

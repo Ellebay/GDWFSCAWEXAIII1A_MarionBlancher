@@ -1,0 +1,107 @@
+---
+title: "Créer nouvelle Mission - KGB"
+layout: "base.njk"
+permalink: "missionsCreate.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<button id="missionBackButton" class="action-button back_btn">Retour Aux Missions</button>
+
+<form id="createMissionForm" class="form_style" action="./controller/missions/create.php" method="post">
+    <div class="row">
+      <div class="col-50 form__section">
+        <label class="form__label" for="missionTitle">Titre</label>
+        <input class="form__input" name="missionTitle" type="text" id="missionTitle" required="true">
+      </div>
+      <div class="col-50 form__section">
+        <label class="form__label" for="missionCodeName">Nom de Code</label>
+        <input class="form__input" name="missionCodeName" type="text" id="missionCodeName" required="true">
+      </div>
+<div class="col-50 form__section">
+        <label class="form__label" for="missionStatus">Status</label>
+        <select class="form__input" name="missionStatus" type="text" id="missionStatus" required="true">
+          <option selected="selected">Sélectionner le Status</option>
+            <option value="Preparation">Preparation</option>
+            <option value="Progress">Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Failure">Failure</option>
+        </select>
+      </div>
+    </div>
+    <div class="form__section">
+      <label class="form__label" for="missionDetail">Description</label>
+      <textarea class="form__input" name="missionDetail" rows="4" id="missionDetail" required="true"></textarea>
+    </div>
+
+     <div class="row">
+      <div class="col-50 form__section"> 
+        <label class="form__label" for="missionCountry">Pays</label>
+        <select class="form__input" name="missionCountry" type="text" id="missionCountry" required="true"></select>
+      </div> 
+      <div class="col-50 form__section">
+        <label class="form__label" for="missionStartDate">Date de Début</label>
+        <input class="form__input" name="missionStartDate" type="date" id="missionStartDate" required="true">
+      </div>
+      <div class="col-50 form__section">
+        <label class="form__label" for="missionEndDate">Date de Fin</label>
+        <input class="form__input" name="missionEndDate" type="date" id="missionEndDate" required="true">
+      </div>
+    </div>
+        </div>
+
+
+     <div class="row">
+      <div class="col-50 form__section"> 
+        <label class="form__label" for="missionHideout">Planque</label>
+        <select class="form__input" name="missionHideout" type="text" id="missionHideout" multiple ></select>
+      </div>
+      <div class="col-50 form__section">
+        <label class="form__label" for="missionType">Type de Mission</label>
+        <select class="form__input" name="missionType" type="text" id="missionType" required="true">
+          <option selected="selected">Sélectionner le Type</option>
+            <option value="Surveillance">Surveillance</option>
+            <option value="Cyber">Cyber-Espionage</option>
+            <option value="Nuclear">Nuclear Attack</option>
+            <option value="Extraction">Point Extraction</option>
+            <option value="Elimination">Elimination</option>
+        </select>
+    </div>
+      <div class="col form__section">
+        <label class="form__label" for="missionSpecialization">Spécialité</label>
+        <select class="form__input" name="missionSpecialization" type="text" id="missionSpecialization" required="true"></select>
+      </div>
+  </div>
+
+     <div class="row">
+      <div class="col-50 form__section"> 
+        <label class="form__label" for="missionAgent">Agent(s)</label>
+        <select class="form__input" name="missionAgent" type="text" id="missionAgent" multiple required="true"></select>
+      </div>
+      <div class="col-50 form__section">
+        <label class="form__label" for="missionContact">Contact(s)</label>
+        <select class="form__input" name="missionContact" type="text" id="missionContact" multiple required="true"></select>
+      </div>
+      <div class="col-50 form__section">
+        <label class="form__label" for="missionTarget">Target(s)</label>
+        <select class="form__input" name="missionTarget" type="text" id="missionTarget" multiple required="true"></select>
+      </div>
+
+
+    <button class="form__button mt-4" type="submit" name="submit">Ajouter Nouvelle Mission</button>
+</form>
+<div id="myModal" class="modal">
+  <div id="modalContent" class="modal-content">
+    <span id="closeModalButton" class="close">close</span>
+    <!-- The message content will be displayed here -->
+  </div>
+</div>
+<script src="./js/missions/create.js"></script>

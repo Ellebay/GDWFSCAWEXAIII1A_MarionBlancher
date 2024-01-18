@@ -1,0 +1,38 @@
+---
+title: "Supprimer Des Cibles - KGB"
+layout: "base.njk"
+permalink: "targetsDelete.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<button id="targetBackButton" class="action-button back_btn">Retour Aux Targets</button>
+
+<div id="delete_wrapper">
+    <div class="detail-container">
+        <select id="target-dropdown" class="dropdown_btn">
+        <!-- Options will be dynamically populated with target data -->
+        </select>
+    </div>
+
+    <button id="targetDeleteButton" class="delete_agent_btn">Supprimer la Cible</button>
+</div>
+
+<div id="myModal" class="modal">
+            
+    <div id="modalContent" class="modal-content">
+        <span id="closeModalButton" class="close">close</span>
+        <!-- The message content will be displayed here -->
+
+    </div>
+</div>
+
+<script src="./js/targets/delete.js"></script>

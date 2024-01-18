@@ -1,0 +1,27 @@
+---
+title: "Liste des Spécialités - KGB"
+layout: "base.njk"
+permalink: "specialties.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<div id="specialty-button" class="mission-button">
+  <!-- Mission button will be inserted here -->
+</div>
+
+<form id="specialty-form">
+  <!-- Mission data will be inserted here -->
+</form>
+
+
+
+<script src="./js/specialties/read.js"></script>

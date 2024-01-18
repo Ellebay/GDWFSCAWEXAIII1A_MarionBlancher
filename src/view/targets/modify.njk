@@ -1,0 +1,63 @@
+---
+title: "Modifications Des Cibles - KGB"
+layout: "base.njk"
+permalink: "targetsModify.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<button id="targetBackButton" class="action-button back_btn">Retour Aux Cibles</button>
+
+<div class="detail-container">
+    <select id="target-dropdown" class="dropdown_btn">
+        <!-- Options will be dynamically populated with target data -->
+    </select>
+</div>
+
+<form id="modifyTarget-form" class="form_style" action="./controller/targets/modify.php" method="post">
+    <div class="row">
+      <div class="col-50 form__section">
+      <label class="form__label" for="targetLastName">Nom</label>
+      <input class="form__input" name="targetLastName" type="text" id="targetLastName" required="true">
+    </div>
+    <div class="col-50 form__section">
+      <label class="form__label" for="targetFirstName">Prénom</label>
+      <input class="form__input" name="targetFirstName" type="text" id="targetFirstName" required="true">
+    </div>
+    <div class="col-50 form__section">
+      <label class="form__label" for="targetBirthDate">Date de Naissance</label>
+      <input class="form__input" name="targetBirthDate" type="date" id="targetBirthDate" required="true">
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-100 form__section">
+      <label class="form__label" for="targetNationality">Nationalité</label>
+      <select class="form__input" name="targetNationality" type="text" id="targetNationality" required="true"></select>
+    </div>
+    <div class="col-100 form__section">
+      <label class="form__label" for="targetCodeName">Nom de Code</label>
+      <input class="form__input" name="targetCodeName" type="text" id="targetCodeName" required="true">
+    </div>
+  </div>
+
+    <button id="targetModifyButton" class="form__button mt-4" type="submit" name="submit">Modifier la Cible</button>
+</form>
+
+<div id="myModal" class="modal">
+            
+    <div id="modalContent" class="modal-content">
+        <span id="closeModalButton" class="close">close</span>
+        <!-- The message content will be displayed here -->
+
+    </div>
+</div>
+
+<script src="./js/targets/modify.js"></script>

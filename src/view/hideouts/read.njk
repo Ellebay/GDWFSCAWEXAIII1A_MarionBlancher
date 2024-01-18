@@ -1,0 +1,27 @@
+---
+title: "Liste des Planques - KGB"
+layout: "base.njk"
+permalink: "hideouts.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<div id="hideout-button" class="mission-button">
+  <!-- Mission button will be inserted here -->
+</div>
+
+<form id="hideout-form">
+  <!-- Mission data will be inserted here -->
+</form>
+
+
+
+<script src="./js/hideouts/read.js"></script>

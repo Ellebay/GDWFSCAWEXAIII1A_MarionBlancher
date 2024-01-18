@@ -1,0 +1,28 @@
+---
+title: "Login - KGB"
+layout: "base.njk"
+permalink: "loginSession.php"
+---
+
+<div id="loginContainer">
+  <h1 class="form-title">Connexion</h1>
+  <form
+    class="form_style" id="loginForm" action="./model/loginPost.php" method="POST">
+    <!-- EMAIL -->
+    <div class="col-12">
+      <label class="form__label" for="email">Adresse email :</label>
+      <input class="form__input" type="email" id="email" name="email" required autocomplete="email"/>
+      <br> <br>
+    </div>
+    <!-- PASSWORD -->
+    <div class="col-12 ">
+      <label class="form__label" for="password">Mot de passe :</label>
+      <input class="form__input" type="password" id="password" name="password" required autocomplete="current-password"/>
+      <br> <br>
+    </div>
+    <!-- BUTTON -->
+    <div class="col-12">
+      <input class="form__button" type="submit" value="Se connecter"/>
+    </div>
+  </form>
+</div>

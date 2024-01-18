@@ -1,0 +1,38 @@
+---
+title: "Supprimer Des Planques - KGB"
+layout: "base.njk"
+permalink: "hideoutsDelete.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<button id="hideoutBackButton" class="action-button back_btn">Retour Aux Planques</button>
+
+<div id="delete_wrapper">
+    <div class="detail-container">
+        <select id="hideout-dropdown"  class="dropdown_btn">
+        <!-- Options will be dynamically populated with hideout data -->
+        </select>
+    </div>
+
+    <button id="hideoutDeleteButton" class="delete_agent_btn">Supprimer la Planque</button>
+</div>
+
+<div id="myModal" class="modal">
+            
+    <div id="modalContent" class="modal-content">
+        <span id="closeModalButton" class="close">close</span>
+        <!-- The message content will be displayed here -->
+
+    </div>
+</div>
+
+<script src="./js/hideouts/delete.js"></script>

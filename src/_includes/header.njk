@@ -1,0 +1,62 @@
+<nav class="navbar-expand-xl d-flex flex-wrap">
+  <div class="logo-header p-2 flex-fill">
+    <a class="d-inline-flex" href="./">
+      <img
+        webc:is="eleventy-image"
+        width="150px"
+        src="assets/images/logo_kgb.svg"
+        alt="logo KGB"
+        class="header-logo-img"></a>
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="20" viewBox="0 0 27 20" fill="none">
+          <path d="M0.952637 0.999999C0.952637 0.447714 1.40035 0 1.95264 0H9.96841C10.5207 0 10.9684 0.447715 10.9684 1V2.33333C10.9684
+          2.88562 10.5207 3.33333 9.96841 3.33333H1.95264C1.40035 3.33333 0.952637 2.88562 0.952637 2.33333V0.999999ZM0.952637
+          9.33333C0.952637 8.78105 1.40035 8.33333 1.95264 8.33333H25.7075C26.2598 8.33333 26.7075 8.78105 26.7075
+          9.33333V10.6667C26.7075 11.219 26.2598 11.6667 25.7075 11.6667H1.95264C1.40035 11.6667 0.952637 11.219 0.952637
+          10.6667V9.33333ZM16.6917 17.6667C16.6917 17.1144 17.1394 16.6667 17.6917 16.6667H25.7075C26.2598 16.6667 26.7075 17.1144
+          26.7075 17.6667V19C26.7075 19.5523 26.2598 20 25.7075 20H17.6917C17.1394 20 16.6917 19.5523 16.6917 19V17.6667Z"/>
+        </svg>
+      </span>
+    </button>
+    <?php if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])) : ?>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if private_navigation.items %}
+        <ul class="navbar-nav p-2 flex-fill">
+          {% for item in private_navigation.items %}
+            <li class="nav__item">
+              <a class="nav__link {{ 'active' if item.url in page.url }}" href=".{{ item.url }}.php">{{ item.text }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <div class="p-2 text-end nav-right">
+        <a class="btn btn-logout" href="./logoutSession.php">Se Déconnecter</a>
+      </div>
+    </div>
+  <?php else: ?>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if public_navigation.items %}
+        <ul class="navbar-nav p-2 flex-fill">
+          {% for item in public_navigation.items %}
+            <li class="nav__item">
+              <a class="nav__link {{ 'active' if item.url in page.url }}" href=".{{ item.url }}.php">{{ item.text }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <div class="p-2 text-end nav-right">
+        <a class="btn btn-login" href="./loginSession.php">Se Connecter</a>
+      </div>
+    </div>
+    <?php endif; ?>
+  </div>
+</nav>

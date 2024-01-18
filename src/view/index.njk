@@ -1,0 +1,34 @@
+---
+title: "Accueil - KGB"
+layout: "base.njk"
+permalink: "index.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<div id="mission-button" class="mission-button">
+  <!-- Mission button will be inserted here -->
+</div>
+
+<form id="searchForm" class="searchDiv">
+    <input type="text" id="searchInput" placeholder="Rechercher un titre...">
+    <button type="submit" id="searchButton">Rechercher</button>
+</form>
+
+
+
+<form id="mission-form">
+  <!-- Mission data will be inserted here -->
+</form>
+
+
+
+<script src="./js/missions/read.js"></script>

@@ -1,0 +1,13 @@
+---
+title: "Logout - KGB"
+layout: "base.njk"
+permalink: "logoutSession.php"
+---
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    session_destroy();
+
+    header('Location: ./loginSession.php');
+    exit;
+} 
+ ?>

@@ -1,0 +1,38 @@
+---
+title: "Supprimer Des Contacts - KGB"
+layout: "base.njk"
+permalink: "contactsDelete.php"
+---
+
+<?php 
+if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
+    // The admin is connected
+    echo '<script>var adminIsConnected = true;</script>';
+} else {
+    // The admin is not connected
+    echo '<script>var adminIsConnected = false;</script>';
+}
+?>
+
+<button id="contactBackButton" class="action-button back_btn">Retour Aux Contacts</button>
+
+<div id="delete_wrapper">
+    <div class="detail-container ">
+        <select id="contact-dropdown"  class="dropdown_btn">
+        <!-- Options will be dynamically populated with contact data -->
+        </select>
+    </div>
+
+    <button id="contactDeleteButton" class="delete_mission_btn ">Supprimer le Contact</button>
+</div>
+
+<div id="myModal" class="modal">
+            
+    <div id="modalContent" class="modal-content">
+        <span id="closeModalButton" class="close">close</span>
+        <!-- The message content will be displayed here -->
+
+    </div>
+</div>
+
+<script src="./js/contacts/delete.js"></script>
