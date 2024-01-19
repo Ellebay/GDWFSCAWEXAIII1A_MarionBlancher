@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Agents Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('./controller/agents/read.php')
+    fetch('../controller/agents/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedAgentId) {
             // Send the selected agent ID to the server for deletion
-            fetch('./controller/agents/delete.php', {
+            fetch('../controller/agents/delete.php', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Suppression de l‘agent réussie.') {
                         // Fetch updated agent data after deletion
-                        fetch('./controller/agents/read.php')
+                        fetch('../controller/agents/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown

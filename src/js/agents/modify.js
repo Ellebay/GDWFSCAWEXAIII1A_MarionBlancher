@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Agents Dropdown ---------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('./controller/agents/read.php')
+    fetch('../controller/agents/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedAgentId = agentDropdown.value;
 
         if (selectedAgentId) {
-            fetch(`./controller/agents/read.php?id_agent=${selectedAgentId}`)
+            fetch(`../controller/agents/read.php?id_agent=${selectedAgentId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.length > 0) {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     /* --------------------------------------------------------------------------------------------------------- */
                     // Fetch JSON data (replace 'countries.json' with the actual path to your JSON file)
                     nationalityDropdown.textContent = agent.agent_nationality;
-                    fetch('./controller/countries.json')
+                    fetch('../controller/countries.json')
                         .then(response => response.json())
                         .then(nationalityData => {
                             // Loop through the data and populate the dropdown
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedAgentId) {
             // Send the selected agent ID to the server for modification
-            fetch('./controller/agents/modify.php', {
+            fetch('../controller/agents/modify.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Modification de l‘agent réussie.') {
                         // Fetch updated agent data after modification
-                        fetch('./controller/agents/read.php')
+                        fetch('../controller/agents/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ------------------------------------------------ Specialty Function -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
     function fetchAndPopulateSpecialties(data) {
-        fetch('./controller/specialties/read.php')
+        fetch('../controller/specialties/read.php')
             .then(response => response.json())
             .then(specialtyData => {
                 // Loop through the specialty data and populate the dropdown

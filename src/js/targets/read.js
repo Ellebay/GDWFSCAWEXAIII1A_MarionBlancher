@@ -1,4 +1,4 @@
-fetch('./controller/targets/read.php') // Adjust the URL as needed
+fetch('../controller/targets/read.php') // Adjust the URL as needed
   .then(response => response.json())
   .then(data => {
     const targetForm = document.getElementById('target-form');

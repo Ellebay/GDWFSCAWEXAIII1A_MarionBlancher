@@ -1,4 +1,4 @@
-fetch('./controller/specialties/read.php') // Adjust the URL as needed
+fetch('../controller/specialties/read.php') // Adjust the URL as needed
   .then(response => response.json())
   .then(data => {
     const specialtyForm = document.getElementById('specialty-form');

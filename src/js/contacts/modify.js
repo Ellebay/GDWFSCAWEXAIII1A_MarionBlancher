@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Contacts Dropdown ---------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('./controller/contacts/read.php')
+    fetch('../controller/contacts/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedContactId = contactDropdown.value;
 
         if (selectedContactId) {
-            fetch(`./controller/contacts/read.php?id_contact=${selectedContactId}`)
+            fetch(`../controller/contacts/read.php?id_contact=${selectedContactId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ------------------------------------------------ Nationality--------------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
     // Fetch JSON data (replace 'countries.json' with the actual path to your JSON file)
-    fetch('./controller/countries.json')
+    fetch('../controller/countries.json')
         .then(response => response.json())
         .then(data => {
             const selectElement = document.getElementById('contactNationality');
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedContactId) {
             // Send the selected contact ID to the server for modification
-            fetch('./controller/contacts/modify.php', {
+            fetch('../controller/contacts/modify.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Modification du contact réussie.') {
                         // Fetch updated contact data after modification
-                        fetch('./controller/contacts/read.php')
+                        fetch('../controller/contacts/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown

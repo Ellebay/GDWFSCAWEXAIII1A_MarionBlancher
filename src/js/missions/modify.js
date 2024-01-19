@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Missions Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('./controller/missions/read.php')
+    fetch('../controller/missions/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     missionDropdown.addEventListener('change', function () {
         const selectedMissionId = missionDropdown.value;
         if (selectedMissionId) {
-            fetch(`./controller/missions/read.php?id_mission=${selectedMissionId}`)
+            fetch(`../controller/missions/read.php?id_mission=${selectedMissionId}`)
                 .then(response => response.json())
                 .then(data => {
                     // Populate the form with mission details
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     selectedSpecialtyID = data.id_specialty;
                     console.log('special ID: ', selectedSpecialtyID);
                     /* fetchAndPopulateSpecialties(); */
-                        fetch('./controller/specialties/read.php')
+                        fetch('../controller/specialties/read.php')
                             .then(response => response.json())
                             .then(specialtyData => {
                                 // Clear existing options in the dropdown
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     countryDropdown.textContent = data.mission_country;
                     const missionCountry = data.mission_country;
                     /* console.log('mission country: ', missionCountry) */
-                    fetch('./controller/countries.json')
+                    fetch('../controller/countries.json')
                         .then(response => response.json())
                         .then(countriesData => {
                             let missionNationality = countriesData.find(country => country.en_short_name === missionCountry)?.nationality;
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedSpecialtyFinal = selectedSpecialtyID;
         console.log('special ID final: ', selectedSpecialtyFinal);
         if (selectedMissionId) {
-            fetch('./controller/missions/modify.php', {
+            fetch('../controller/missions/modify.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Modification de la mission réussie.') {
                         // Fetch updated agent data after modification
-                        fetch('./controller/missions/read.php')
+                        fetch('../controller/missions/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ------------------------------------------------ Hideout Function --------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
     function fetchAndPopulateHideouts(country, data) {
-        fetch(`./controller/hideouts/read.php?country=${country}`)
+        fetch(`../controller/hideouts/read.php?country=${country}`)
             .then(response => response.json())
             .then(hideoutData => {
                 // Clear existing options in the dropdown
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ------------------------------------------------ Agent Function --------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
     function fetchAndPopulateAgents(SpecialtyId, data) {
-        fetch(`./controller/agents/read.php?specialtyId=${SpecialtyId}`)
+        fetch(`../controller/agents/read.php?specialtyId=${SpecialtyId}`)
             .then(response => response.json())
             .then(agentData => {
                 // Clear existing options in the agent dropdown
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ------------------------------------------------ Contact Function --------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
     function fetchAndPopulateContacts(nationality, data) {
-        fetch(`./controller/contacts/read.php?nationality=${nationality}`)
+        fetch(`../controller/contacts/read.php?nationality=${nationality}`)
             .then(response => response.json())
             .then(contactData => {
                 // Clear existing options in the dropdown
@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ------------------------------------------------- Target Function --------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
     function fetchAndPopulateTargets(selectedAgentId, data) {
-        fetch(`./controller/agents/read.php?id_agent=${selectedAgentId}`)
+        fetch(`../controller/agents/read.php?id_agent=${selectedAgentId}`)
             .then(response => response.json())
             .then(agentData => {
                 if (agentData.length > 0) {
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const nationality = agent.agent_nationality;
                 /* console.log('agent nationality: ', agent.agent_nationality); */
 
-                fetch(`./controller/targets/read.php?nationality=${nationality}`)
+                fetch(`../controller/targets/read.php?nationality=${nationality}`)
                     .then(response => response.json())
                     .then(targetData => {
                         // Clear existing options in the dropdown

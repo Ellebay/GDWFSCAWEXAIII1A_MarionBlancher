@@ -1,12 +1,21 @@
 <?php
-session_start(); 
-$dsn = 'mysql:host=localhost;dbname=kgb_bdd';
-$username = 'admin_kgb_bdd';
-$password = '$2y$10$Nxj0Dpon5jaeIxYToqaGIOr2UQlCQGADmuc0p24CIe2ulYNESQvP.';
+session_start();
 
-try{
-  $pdo = new PDO($dsn, $username, $password);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once __DIR__ . '/../../vendor/autoload.php'; // Path to autoload.php
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../'); // Adjusted path to project root
+$dotenv->load();
+
+$dsn = "mysql:host={$_ENV["DB_HOST"]};dbname={$_ENV["DB_NAME"]}";
+/*   $options = array(
+    PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt",
+  ); */
+
+try {
+    // Connect to the database
+    $pdo = new PDO($dsn, $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"]);
+    /* $pdo = new PDO($dsn, $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"], $options); */
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   //Récupérer les données du formulaire de connexion
   $emailForm = $_POST['email'];
@@ -29,7 +38,7 @@ try{
         $_SESSION['adminFirstName'] = $monUser['admin_first_name'];
 /*         $message = "Connexion réussie ! Bienvenue " . $monUser['admin_first_name'] . " " . $monUser['admin_last_name'] ;
  */
-        header("Location: ../index.php"); 
+        header("Location: ../api/index.php"); 
 
       } else {
         // Mot de passe incorrect
