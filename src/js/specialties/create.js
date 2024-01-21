@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Send data to the server
-        fetch('../api/specialties/create.php', {
+        fetch('./controller/specialties/create.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

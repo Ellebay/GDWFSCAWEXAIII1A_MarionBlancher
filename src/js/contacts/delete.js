@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Contacts Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../api/contacts/read.php')
+    fetch('./controller/contacts/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedContactId) {
             // Send the selected contact ID to the server for deletion
-            fetch('../api/contacts/delete.php', {
+            fetch('./controller/contacts/delete.php', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Suppression du contact réussie.') {
                         // Fetch updated contact data after deletion
-                        fetch('../api/contacts/read.php')
+                        fetch('./controller/contacts/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown

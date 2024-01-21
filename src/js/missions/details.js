@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Missions Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../api/missions/read.php')
+    fetch('./controller/missions/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedMissionId = missionDropdown.value;
 
         if (selectedMissionId) {
-            fetch(`../api/missions/read.php?id_mission_detail=${selectedMissionId}`)
+            fetch(`./controller/missions/read.php?id_mission_detail=${selectedMissionId}`)
                 .then(response => response.json())
                 .then(data => {
                     missionDetailForm.innerHTML = '';

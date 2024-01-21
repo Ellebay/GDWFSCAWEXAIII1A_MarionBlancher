@@ -15,7 +15,7 @@ class ReadMission {
   }
 
   fetchMissions() {
-      fetch('../api/missions/read.php')
+      fetch('./controller/missions/read.php')
           .then(response => response.json())
           .then(data => this.displayMissions(data))
           .catch(error => console.error('Error fetching data:', error));
@@ -25,7 +25,7 @@ class ReadMission {
       if (!searchTerm.trim()) {
           this.fetchMissions();
       } else {
-          fetch(`../api/missions/search.php?searchTerm=${encodeURIComponent(searchTerm)}`)
+          fetch(`./controller/missions/search.php?searchTerm=${encodeURIComponent(searchTerm)}`)
               .then(response => response.json())
               .then(data => this.displayMissions(data))
               .catch(error => console.error('Error fetching search results:', error));

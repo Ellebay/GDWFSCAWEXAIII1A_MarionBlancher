@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Targets Dropdown ---------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../api/targets/read.php')
+    fetch('./controller/targets/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedTargetId = targetDropdown.value;
 
         if (selectedTargetId) {
-            fetch(`../api/targets/read.php?id_target=${selectedTargetId}`)
+            fetch(`./controller/targets/read.php?id_target=${selectedTargetId}`)
                 .then(response => response.json())
                 .then(data => {
 
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ------------------------------------------------ Nationality--------------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
     // Fetch JSON data (replace 'countries.json' with the actual path to your JSON file)
-    fetch('../api/countries.json')
+    fetch('./controller/countries.json')
         .then(response => response.json())
         .then(data => {
             const selectElement = document.getElementById('targetNationality');
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedTargetId) {
             // Send the selected target ID to the server for modification
-            fetch('../api/targets/modify.php', {
+            fetch('./controller/targets/modify.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Modification de la cible réussie.') {
                         // Fetch updated target data after modification
-                        fetch('../api/targets/read.php')
+                        fetch('./controller/targets/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
