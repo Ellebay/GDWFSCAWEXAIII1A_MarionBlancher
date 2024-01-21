@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Agents Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/agents/read.php')
+    fetch('../api/agents/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedAgentId) {
             // Send the selected agent ID to the server for deletion
-            fetch('../controller/agents/delete.php', {
+            fetch('../api/agents/delete.php', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Suppression de l‘agent réussie.') {
                         // Fetch updated agent data after deletion
-                        fetch('../controller/agents/read.php')
+                        fetch('../api/agents/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 // Add a default option
                                 const defaultOption = document.createElement('option');
                                 defaultOption.value = '';
-                                defaultOption.textContent = 'Select your agent';
+                                defaultOption.textContent = 'Sélectionner l`Agent';
                                 agentDropdown.appendChild(defaultOption);
 
                                 // Loop through the updated data and populate the dropdown
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         } else {
             // Display the message in the modal window
-            modalContent.textContent = 'No agent selected for deletion.';
+            modalContent.textContent = 'Aucun Agent sélectionné.';
             modal.style.display = 'block';
         }
     }

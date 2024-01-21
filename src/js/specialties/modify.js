@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Specialties Dropdown ---------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/specialties/read.php')
+    fetch('../api/specialties/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedSpecialtyId = specialtyDropdown.value;
 
         if (selectedSpecialtyId) {
-            fetch(`../controller/specialties/read.php?id_specialty=${selectedSpecialtyId}`)
+            fetch(`../api/specialties/read.php?id_specialty=${selectedSpecialtyId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.length > 0) {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedSpecialtyId) {
             // Send the selected specialty ID to the server for modification
-            fetch('../controller/specialties/modify.php', {
+            fetch('../api/specialties/modify.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Modification de la spécialité réussie.') {
                         // Fetch updated specialty data after modification
-                        fetch('../controller/specialties/read.php')
+                        fetch('../api/specialties/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         } else {
             // Display the message in the modal window
-            modalContent.textContent = 'Aucune spécialité sélectionnée pour la modification.';
+            modalContent.textContent = 'Aucune spécialité sélectionnée.';
             modal.style.display = 'block';
         }
     });

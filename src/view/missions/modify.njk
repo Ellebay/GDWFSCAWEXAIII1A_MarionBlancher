@@ -1,7 +1,7 @@
 ---
 title: "Modifications Des Missions - KGB"
 layout: "base.njk"
-permalink: "api/missionsModify.php"
+permalink: "missionsModify.php"
 ---
 
 <?php 
@@ -19,7 +19,7 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     id="mission-dropdown" class="dropdown_btn"><!-- Options will be dynamically populated with mission data -->
   </select>
 </div>
-<form id="modifyMission-form"   class="form_style" action="./controller/missions/modify.php" method="post">
+<form id="modifyMission-form"   class="form_style" action="../api/missions/modify.php" method="post">
     <div class="row">
       <div class="col-50 form__section">
     <label class="form__label" for="missionTitle">Titre</label>
@@ -94,4 +94,4 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     <!-- The message content will be displayed here -->
   </div>
 </div>
-<script src="../js/missions/modify.js"></script>
+<script src="./js/missions/modify.js"></script>

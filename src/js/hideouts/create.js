@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeModalButton = document.getElementById('closeModalButton');
     /* ------------------------------------------------ Nationality--------------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/countries.json')
+    fetch('../api/countries.json')
         .then(response => response.json())
         .then(data => {
             // Get the select element
@@ -65,7 +65,7 @@ console.log('country: ', hideoutCountry);
         };
 
         // Send data to the server
-        fetch('../controller/hideouts/create.php', {
+        fetch('../api/hideouts/create.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

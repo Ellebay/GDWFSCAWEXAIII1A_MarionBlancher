@@ -1,7 +1,7 @@
 ---
 title: "Modifications Des Contacts - KGB"
 layout: "base.njk"
-permalink: "api/contactsModify.php"
+permalink: "contactsModify.php"
 ---
 
 <?php 
@@ -22,7 +22,7 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     </select>
 </div>
 
-<form id="modifyContact-form"  class="form_style" action="./controller/contacts/modify.php" method="post">
+<form id="modifyContact-form"  class="form_style" action="../api/contacts/modify.php" method="post">
     <div class="row">
       <div class="col-50 form__section">
       <label class="form__label" for="contactLastName">Nom</label>
@@ -60,4 +60,4 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     </div>
 </div>
 
-<script src="../js/contacts/modify.js"></script>
+<script src="./js/contacts/modify.js"></script>

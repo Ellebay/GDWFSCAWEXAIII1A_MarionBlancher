@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Specialties Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/specialties/read.php')
+    fetch('../api/specialties/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedSpecialtyId) {
             // Send the selected specialty ID to the server for deletion
-            fetch('../controller/specialties/delete.php', {
+            fetch('../api/specialties/delete.php', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Suppression de la spécialité réussie.') {
                         // Fetch updated specialty data after deletion
-                        fetch('../controller/specialties/read.php')
+                        fetch('../api/specialties/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         } else {
             // Display the message in the modal window
-            modalContent.textContent = 'No specialty selected for deletion.';
+            modalContent.textContent = 'Aucune spécialité sélectionnée.';
             modal.style.display = 'block';
         }
     }

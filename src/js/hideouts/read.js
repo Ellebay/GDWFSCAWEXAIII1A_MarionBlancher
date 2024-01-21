@@ -1,4 +1,4 @@
-fetch('../controller/hideouts/read.php') // Adjust the URL as needed
+fetch('../api/hideouts/read.php') // Adjust the URL as needed
   .then(response => response.json())
   .then(data => {
     const hideoutForm = document.getElementById('hideout-form');

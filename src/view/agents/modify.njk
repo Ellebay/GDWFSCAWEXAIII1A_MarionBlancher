@@ -1,7 +1,7 @@
 ---
 title: "Modifications Des Agents - KGB"
 layout: "base.njk"
-permalink: "api/agentsModify.php"
+permalink: "agentsModify.php"
 ---
 
 <?php 
@@ -22,7 +22,7 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     </select>
 </div>
 
-<form id="modifyAgent-form" class="form_style" action="./controller/agents/modify.php" method="post">
+<form id="modifyAgent-form" class="form_style" action="../api/agents/modify.php" method="post">
     <div class="row">
       <div class="col-50 form__section">
       <label class="form__label" for="agentLastName">Nom</label>
@@ -64,4 +64,4 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     </div>
 </div>
 
-<script src="../js/agents/modify.js"></script>
+<script src="./js/agents/modify.js"></script>

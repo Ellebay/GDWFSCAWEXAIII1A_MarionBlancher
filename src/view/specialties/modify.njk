@@ -1,7 +1,7 @@
 ---
 title: "Modifications Des Spécialités - KGB"
 layout: "base.njk"
-permalink: "api/specialtiesModify.php"
+permalink: "specialtiesModify.php"
 ---
 
 <?php 
@@ -22,7 +22,7 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     </select>
 </div>
 
-<form id="modifySpecialty-form"  class="form_style" action="./controller/specialties/modify.php" method="post">
+<form id="modifySpecialty-form"  class="form_style" action="../api/specialties/modify.php" method="post">
     <div class="row">
       <div class="col-100 form__section">
       <label class="form__label" for="specialtyType">Type</label>
@@ -46,4 +46,4 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     </div>
 </div>
 
-<script src="../js/specialties/modify.js"></script>
+<script src="./js/specialties/modify.js"></script>

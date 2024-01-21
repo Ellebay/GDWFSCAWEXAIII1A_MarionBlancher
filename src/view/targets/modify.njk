@@ -1,7 +1,7 @@
 ---
 title: "Modifications Des Cibles - KGB"
 layout: "base.njk"
-permalink: "api/targetsModify.php"
+permalink: "targetsModify.php"
 ---
 
 <?php 
@@ -22,7 +22,7 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     </select>
 </div>
 
-<form id="modifyTarget-form" class="form_style" action="./controller/targets/modify.php" method="post">
+<form id="modifyTarget-form" class="form_style" action="../api/targets/modify.php" method="post">
     <div class="row">
       <div class="col-50 form__section">
       <label class="form__label" for="targetLastName">Nom</label>
@@ -60,4 +60,4 @@ if(isset($_SESSION['adminLoggedIn']) && isset($_SESSION['adminFirstName'])){
     </div>
 </div>
 
-<script src="../js/targets/modify.js"></script>
+<script src="./js/targets/modify.js"></script>

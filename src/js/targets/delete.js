@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Targets Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/targets/read.php')
+    fetch('../api/targets/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedTargetId) {
             // Send the selected target ID to the server for deletion
-            fetch('../controller/targets/delete.php', {
+            fetch('../api/targets/delete.php', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Suppression de la cible réussie.') {
                         // Fetch updated target data after deletion
-                        fetch('../controller/targets/read.php')
+                        fetch('../api/targets/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         } else {
             // Display the message in the modal window
-            modalContent.textContent = 'No target selected for deletion.';
+            modalContent.textContent = 'Aucune Cible sélectionnée.';
             modal.style.display = 'block';
         }
     }

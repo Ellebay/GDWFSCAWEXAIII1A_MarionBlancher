@@ -1,4 +1,4 @@
-fetch('../controller/agents/read.php') // Adjust the URL as needed
+fetch('../api/agents/read.php') // Adjust the URL as needed
   .then(response => response.json())
   .then(data => {
     const agentForm = document.getElementById('agent-form');

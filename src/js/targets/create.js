@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeModalButton = document.getElementById('closeModalButton');
     /* ------------------------------------------------ Nationality--------------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/countries.json')
+    fetch('../api/countries.json')
         .then(response => response.json())
         .then(data => {
             // Get the select element
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Send data to the server
-        fetch('../controller/targets/create.php', {
+        fetch('../api/targets/create.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

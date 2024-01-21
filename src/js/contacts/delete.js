@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Contacts Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/contacts/read.php')
+    fetch('../api/contacts/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedContactId) {
             // Send the selected contact ID to the server for deletion
-            fetch('../controller/contacts/delete.php', {
+            fetch('../api/contacts/delete.php', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Suppression du contact réussie.') {
                         // Fetch updated contact data after deletion
-                        fetch('../controller/contacts/read.php')
+                        fetch('../api/contacts/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 // Add a default option
                                 const defaultOption = document.createElement('option');
                                 defaultOption.value = '';
-                                defaultOption.textContent = 'Sélecitonner le Contact';
+                                defaultOption.textContent = 'Sélectionner le Contact';
                                 contactDropdown.appendChild(defaultOption);
 
                                 // Loop through the updated data and populate the dropdown
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         } else {
             // Display the message in the modal window
-            modalContent.textContent = 'No contact selected for deletion.';
+            modalContent.textContent = 'Aucun Contact sélectionné.';
             modal.style.display = 'block';
         }
     }

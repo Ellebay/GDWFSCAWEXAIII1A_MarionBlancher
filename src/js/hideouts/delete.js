@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Hideouts Dropdown -------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/hideouts/read.php')
+    fetch('../api/hideouts/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedHideoutId) {
             // Send the selected hideout ID to the server for deletion
-            fetch('../controller/hideouts/delete.php', {
+            fetch('../api/hideouts/delete.php', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Suppression de la planque réussie.') {
                         // Fetch updated hideout data after deletion
-                        fetch('../controller/hideouts/read.php')
+                        fetch('../api/hideouts/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         } else {
             // Display the message in the modal window
-            modalContent.textContent = 'No hideout selected for deletion.';
+            modalContent.textContent = 'Aucune Planque sélectionnée.';
             modal.style.display = 'block';
         }
     }

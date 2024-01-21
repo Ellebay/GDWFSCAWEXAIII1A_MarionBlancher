@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ------------------------------------------------ Hideouts Dropdown ---------------------------------------- */
     /* --------------------------------------------------------------------------------------------------------- */
-    fetch('../controller/hideouts/read.php')
+    fetch('../api/hideouts/read.php')
         .then(response => response.json())
         .then(data => {
             // Add a default option
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedHideoutId = hideoutDropdown.value;
 
         if (selectedHideoutId) {
-            fetch(`../controller/hideouts/read.php?id_hideout=${selectedHideoutId}`)
+            fetch(`../api/hideouts/read.php?id_hideout=${selectedHideoutId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.length > 0) {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fetch JSON data (replace 'countries.json' with the actual path to your JSON file)
     countryDropdown.textContent = hideout.hideout_country;
     console.log('hideout country: ',hideout );
-    fetch('../controller/countries.json')
+    fetch('../api/countries.json')
         .then(response => response.json())
         .then(countryData => {
             countryData.forEach(country => {
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedHideoutId) {
             // Send the selected hideout ID to the server for modification
-            fetch('../controller/hideouts/modify.php', {
+            fetch('../api/hideouts/modify.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Check if the deletion was successful
                     if (data.message === 'Modification de la planque réussie.') {
                         // Fetch updated hideout data after modification
-                        fetch('../controller/hideouts/read.php')
+                        fetch('../api/hideouts/read.php')
                             .then(response => response.json())
                             .then(updatedData => {
                                 // Clear existing options in the dropdown
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         } else {
             // Display the message in the modal window
-            modalContent.textContent = 'No hideout selected for modification.';
+            modalContent.textContent = 'Aucune Planque sélectionnée.';
             modal.style.display = 'block';
         }
     });

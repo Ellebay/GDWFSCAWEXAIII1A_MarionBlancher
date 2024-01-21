@@ -1,4 +1,4 @@
-fetch('../controller/contacts/read.php') // Adjust the URL as needed
+fetch('../api/contacts/read.php') // Adjust the URL as needed
   .then(response => response.json())
   .then(data => {
     const contactForm = document.getElementById('contact-form');
