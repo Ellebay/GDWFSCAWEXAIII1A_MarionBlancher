@@ -1,0 +1,20 @@
+{
+    "name": "Agence KGB",
+    "description": "Explorez les missions, les agents, les contacts, les cibles, les planques et les spécialités.",
+    "repository": "https://github.com/Ellebay/GDWFSCAWEXAIII1A_MarionBlancher",
+    "logo": "https://node-js-sample-1234567890ab.herokuapp.com/node.png",
+    "keywords": ["PHP", "JS", "HTML5"],
+    "addons": [
+        {
+          "plan": "ah-mysql-stackhero:ist-kqor2t"
+        }
+      ],
+      "buildpacks": [
+        {
+          "url": "heroku/php"
+        },
+        {
+            "url": "heroku/nodejs"
+        }
+      ]
+  }
