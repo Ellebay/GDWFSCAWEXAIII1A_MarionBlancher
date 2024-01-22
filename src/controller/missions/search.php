@@ -9,7 +9,7 @@ if (file_exists(__DIR__ . '/../../../' . '/.env')) {
   $dotenv->load();
 }
 
-$dsn = "mysql:host={$_ENV["DB_HOST"]};dbname={$_ENV["DB_NAME"]}";
+$dsn = "mysql:host={$_ENV["STACKHERO_MYSQL_HOST"]};dbname={$_ENV["STACKHERO_MYSQL_NAME"]}";
   $options = array(
     PDO::MYSQL_ATTR_SSL_CAPATH => '/etc/ssl/certs/',
     PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
@@ -18,7 +18,7 @@ $dsn = "mysql:host={$_ENV["DB_HOST"]};dbname={$_ENV["DB_NAME"]}";
 try {
     // Connect to the database
     /* $pdo = new PDO($dsn, $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"]); */
-    $pdo = new PDO($dsn, $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"], $options);
+    $pdo = new PDO($dsn, $_ENV["STACKHERO_MYSQL_USER"], $_ENV["STACKHERO_MYSQL_PASSWORD"], $options);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   if (isset($_GET['searchTerm'])) {
