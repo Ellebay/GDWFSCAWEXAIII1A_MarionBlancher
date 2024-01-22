@@ -65,7 +65,9 @@ See more information here: https://devcenter.heroku.com/articles/ah-mysql-stackh
 ### Create an .env file
 Create an .env file with your database information, you can find those information in the ressources of the add-ons Stackehero for MySQL in your Heroku dashboard.
 
+```
 STACKHERO_MYSQL_HOST= host name
 STACKHERO_MYSQL_PASSWORD= password
 STACKHERO_MYSQL_USER= username
 STACKHERO_MYSQL_NAME= bdd name
+```
