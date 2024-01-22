@@ -11,7 +11,7 @@ if (file_exists(__DIR__ . '/../../../' . '/.env')) {
 
 $dsn = "mysql:host={$_ENV["DB_HOST"]};dbname={$_ENV["DB_NAME"]}";
   $options = array(
-    PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/cert.pem",
+    PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt",
   );
 
 try {
