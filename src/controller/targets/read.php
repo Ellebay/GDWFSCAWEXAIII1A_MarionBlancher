@@ -10,14 +10,14 @@ if (file_exists(__DIR__ . '/../../../' . '/.env')) {
 }
 
 $dsn = "mysql:host={$_ENV["DB_HOST"]};dbname={$_ENV["DB_NAME"]}";
-/*   $options = array(
-    PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt",
-  ); */
+  $options = array(
+    PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/cert.pem",
+  );
 
 try {
-  // Connect to the database
-  $pdo = new PDO($dsn, $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"]);
-  /* $pdo = new PDO($dsn, $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"], $options); */
+    // Connect to the database
+    /* $pdo = new PDO($dsn, $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"]); */
+    $pdo = new PDO($dsn, $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"], $options);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   // Check if a target ID is provided in the query string
